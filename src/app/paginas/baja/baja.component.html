@@ -1,1 +1,14 @@
-<p>baja works!</p>
+<h2>Baja de Usuario</h2>
+<div *ngIf="this.usuarios.length>0">
+    <div *ngFor="let unUsuario of this.usuarios">
+        <app-usuario-detalle [miAtributo]="unUsuario" [mostrarBotonEditar]="false" [mostrarBotonEliminar]="true" (elimina)="eliminar($event)"></app-usuario-detalle>
+        <!-- Botón para eliminar al usuario -->
+        
+    </div>
+    <!-- Botón para volver -->
+    <div class="botones">
+    <button mat-raised-button color="warn" routerLink="/">
+      <mat-icon>arrow_back</mat-icon> Volver
+    </button>
+  </div>
+</div>

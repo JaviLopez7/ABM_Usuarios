@@ -16,7 +16,7 @@ export class ModificarComponent {
   unUsuario!: Usuario;
   public usuarios: Array<Usuario>;
 
-  constructor(public route: Router , public usuarioService: UsuarioService) {
+  constructor(public route: Router, public usuarioService: UsuarioService) {
     this.usuarios = this.usuarioService.Usuario;
   }
 

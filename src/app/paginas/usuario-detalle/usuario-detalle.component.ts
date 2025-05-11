@@ -13,12 +13,18 @@ export class UsuarioDetalleComponent {
   @Input('miAtributo')
   public miUsuario: Usuario = new Usuario();
   
-  @Input() mostrarBotonEditar: boolean = true;
+  @Input() mostrarBotonEditar: boolean = false;
+  @Input() mostrarBotonEliminar: boolean = false;
 
   @Output() edita = new EventEmitter<number>();
+  @Output() elimina = new EventEmitter<number>();
 
   public editar() {
     this.edita.emit(this.miUsuario._id);
   }
 
+  public eliminar() {
+    this.elimina.emit(this.miUsuario._id);
+  }
+  
 }
