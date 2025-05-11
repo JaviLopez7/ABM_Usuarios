@@ -1,29 +1,38 @@
 <div class="contenedor_formulario">
-  <h2>Formulario de Alta</h2>
+  <!-- Título dinámico, cambia si estamos en modo edición o alta -->
+  <h2>{{ modoEdicion ? 'Editar Usuario' : 'Agregar Usuario' }}</h2>
 
+  <!-- Formulario para agregar o editar usuario -->
   <form>
+    <!-- Campo para el nombre -->
     <mat-form-field appearance="fill" class="formulario_campos">
       <mat-label>Nombre</mat-label>
-      <input matInput name="nombre" required>
+      <input matInput type="text" name="nombre" [(ngModel)]="this.miUsuario._nombre" required>
     </mat-form-field>
 
+    <!-- Campo para el apellido -->
     <mat-form-field appearance="fill" class="formulario_campos">
       <mat-label>Apellido</mat-label>
-      <input matInput name="apellido" required>
+      <input matInput type="text" name="apellido" [(ngModel)]="this.miUsuario._apellido" required>
     </mat-form-field>
 
+    <!-- Campo para el correo electrónico -->
     <mat-form-field appearance="fill" class="formulario_campos">
       <mat-label>Correo electrónico</mat-label>
-      <input matInput type="email" name="correo" required>
+      <input matInput type="email" name="correoElectronico" [(ngModel)]="this.miUsuario._correoElectronico" required>
     </mat-form-field>
 
+    <!-- Campo para la contraseña -->
     <mat-form-field appearance="fill" class="formulario_campos">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" name="contrasena" required>
+      <input matInput type="password" name="contrasenia" [(ngModel)]="this.miUsuario._contrasenia" required>
     </mat-form-field>
 
-    <div class="botones">
-      <button mat-raised-button color="primary" type="submit">
+    <!-- Botón de envío, aparece si hay correo y contraseña en el formulario -->
+    <div class="botones" *ngIf="this.miUsuario._correoElectronico??'' != '' && this.miUsuario._contrasenia??'' != ''">
+      <button mat-raised-button color="primary" type="submit" (click)="agregarUsuario()">
+        <!-- El texto cambia si estamos en modo edición o alta -->
+        {{ modoEdicion ? 'Guardar Cambios' : 'Crear Usuario' }}
         <mat-icon>person_add</mat-icon> Agregar
       </button>
     </div>

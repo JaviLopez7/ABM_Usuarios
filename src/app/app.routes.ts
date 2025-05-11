@@ -10,6 +10,7 @@ export const routes: Routes = [
     {path: '', component: PrincipalComponent},
     {path: 'principal', component: PrincipalComponent},
     {path: 'alta', component: AltaComponent},
+    {path: 'alta/:id', component: AltaComponent},
     {path: 'baja', component: BajaComponent},
     {path: 'modificar', component: ModificarComponent},
     {path: 'listado', component: ListadoComponent},

@@ -1,1 +1,12 @@
-<p>modificar works!</p>
+<h1>Listado de usuarios</h1>
+<div *ngIf="this.usuarios.length>0">
+    <div *ngFor="let unUsuario of this.usuarios">
+        <app-usuario-detalle [miAtributo]="unUsuario" (edita)="editar($event)" [mostrarBotonEditar]="true"></app-usuario-detalle>
+    </div>
+
+    <div class="botones">
+    <button mat-raised-button color="warn" routerLink="/">
+      <mat-icon>arrow_back</mat-icon> Volver
+    </button>
+  </div>
+</div>

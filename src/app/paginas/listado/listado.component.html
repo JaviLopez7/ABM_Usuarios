@@ -1,1 +1,12 @@
-<p>listado works!</p>
+<h1>Listado de usuarios</h1>
+<div *ngIf="this.usuarios.length>0">
+    <div *ngFor="let unUsuario of this.usuarios">
+        <app-usuario-detalle [miAtributo]="unUsuario" [mostrarBotonEditar]="false"></app-usuario-detalle>
+    </div>
+    <!-- Botón "Volver" fuera del formulario para evitar que dispare la validación -->
+  <div class="botones">
+    <button mat-raised-button color="warn" routerLink="/">
+      <mat-icon>arrow_back</mat-icon> Volver
+    </button>
+  </div>
+</div>
