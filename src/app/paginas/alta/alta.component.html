@@ -33,12 +33,12 @@
       <button mat-raised-button color="primary" type="submit" (click)="agregarUsuario()">
         <!-- El texto cambia si estamos en modo edición o alta -->
         {{ modoEdicion ? 'Guardar Cambios' : 'Crear Usuario' }}
-        <mat-icon>person_add</mat-icon> Agregar
+        <mat-icon>person_add</mat-icon>
       </button>
     </div>
   </form>
 
-  <!-- Botón "Volver" fuera del formulario para evitar que dispare la validación -->
+  <!-- Botón "Volver"-->
   <div class="botones">
     <button mat-raised-button color="warn" routerLink="/">
       <mat-icon>arrow_back</mat-icon> Volver

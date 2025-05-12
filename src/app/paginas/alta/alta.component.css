@@ -1,15 +1,13 @@
-/* Contenedor formulario*/
 .contenedor_formulario {
   max-width: 400px;
   margin: 80px auto;
   padding: 24px;
   text-align: center;
   border-radius: 12px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Formulario de Alta*/
 h2 {
   font-size: 24px;
   font-weight: 600;
@@ -28,7 +26,16 @@ h2 {
   font-size: 16px;
 }
 
-/* Agregar y volver */
+button {
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
 .botones {
   display: flex;
   flex-direction: column;
@@ -36,16 +43,5 @@ h2 {
   margin-top: 24px;
 }
 
-/* Estilo de los botones */
-button {
-  border-radius: 8px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-/* Efecto hover */
-button:hover {
-  transform: scale(1.05);
-}
 
 

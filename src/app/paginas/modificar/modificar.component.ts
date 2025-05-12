@@ -13,14 +13,18 @@ import { UsuarioService } from '../../servicios/usuario.service';
   styleUrl: './modificar.component.css'
 })
 export class ModificarComponent {
-  unUsuario!: Usuario;
+
   public usuarios: Array<Usuario>;
 
-  constructor(public route: Router, public usuarioService: UsuarioService) {
+  constructor(public route: Router,
+    public usuarioService: UsuarioService) {
+    // Se obtienen los usuarios al inicializar el componente
     this.usuarios = this.usuarioService.Usuario;
   }
 
+  // Método que navega a la ruta de alta/edición con el ID del usuario
   public editar(id: number) {
+    // Redirige al componente de alta pasando el ID para entrar en modo edición
     this.route.navigateByUrl("alta/" + id.toString());
   }
 }

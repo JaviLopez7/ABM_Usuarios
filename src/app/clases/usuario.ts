@@ -42,7 +42,4 @@ export class Usuario {
     public set contrasenia(v : string) {
         this._contrasenia = v;
     }
-    
-    
-    
 }

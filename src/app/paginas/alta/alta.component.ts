@@ -3,7 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Usuario } from '../../clases/usuario';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -19,15 +19,20 @@ import { UsuarioService } from '../../servicios/usuario.service';
 })
 export class AltaComponent {
 
+  // Objeto de usuario que se vincula al formulario
   public miUsuario!: Usuario;
+  // Bandera para saber si estamos en modo edición (true) o modo alta (false)
   public modoEdicion: boolean = false;
 
   constructor(
+    public route: Router,
     public activeRoute: ActivatedRoute,
     public usuarioService: UsuarioService,
     private snackBar: MatSnackBar
   ) {
+    // Inicializa el usuario
     this.miUsuario = new Usuario();
+
 
     this.activeRoute.paramMap.subscribe((param) => {
       let idParametro = param.get('id') ?? '';
@@ -44,11 +49,12 @@ export class AltaComponent {
           unUsuario => unUsuario._id.toString() === idParametro
         )[0] ?? new Usuario();
 
-        this.modoEdicion = true; // Modo edición
+        this.modoEdicion = true;
       }
     });
   }
 
+  // Método para agregar o modificar un usuario
   public agregarUsuario() {
     let usuarios: Array<Usuario> = this.usuarioService.Usuario;
 
@@ -56,7 +62,7 @@ export class AltaComponent {
     let index = usuarios.findIndex(u => u._id === this.miUsuario._id);
 
     if (index !== -1) {
-      //  Modo edición: reemplazar el usuario en la misma posición
+      // Modo edición: reemplazar el usuario en la misma posición
       usuarios[index] = this.miUsuario;
 
       this.snackBar.open('Usuario modificado exitosamente', 'Cerrar', {
@@ -74,12 +80,15 @@ export class AltaComponent {
           verticalPosition: 'top',
           panelClass: ['snack-error']
         });
+        // No se agrega el usuario si el correo ya existe
         return;
       }
 
-      // Asignar nuevo ID y agregar
+      // Si es válido, asignar un nuevo ID y agregar al array
       this.miUsuario._id = usuarios.length + 1;
       usuarios.push(this.miUsuario);
+      // Redirigir al inicio
+      this.route.navigateByUrl("/" );
 
       this.snackBar.open('Usuario agregado exitosamente', 'Cerrar', {
         duration: 3000,
@@ -90,6 +99,8 @@ export class AltaComponent {
 
     // Guardar la lista actualizada en el servicio
     this.usuarioService.saveUsuario(usuarios);
+    // Redirigir al inicio
+    this.route.navigateByUrl("/" );
 
     // Limpiar el formulario
     this.miUsuario = new Usuario();

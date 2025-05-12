@@ -15,9 +15,13 @@ import { UsuarioDetalleComponent } from '../usuario-detalle/usuario-detalle.comp
 })
 export class ListadoComponent {
   
+  // Lista de usuarios que se mostrarán en la vista
   public usuarios: Array<Usuario>;
 
-  constructor(public rout:Router, public usuarioService: UsuarioService) {
+  constructor(public rout:Router,
+    public usuarioService: UsuarioService) {
+    // Se obtienen los usuarios desde el servicio y se asignan al Array local
     this.usuarios = this.usuarioService.Usuario;
   }
+  
 }

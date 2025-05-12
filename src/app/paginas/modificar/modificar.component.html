@@ -1,12 +1,16 @@
-<h1>Modificar usuarios</h1>
-<div *ngIf="this.usuarios.length>0">
+<div class="contenedor_tabla">
+  <h2>Modificar usuarios</h2>
+  <!-- Se muestra el contenido solo si hay usuarios cargados -->
+  <div *ngIf="this.usuarios.length>0">
     <div *ngFor="let unUsuario of this.usuarios">
-        <app-usuario-detalle [miAtributo]="unUsuario" (edita)="editar($event)" [mostrarBotonEditar]="true"></app-usuario-detalle>
+      <!-- Se usa el componente 'app-usuario-detalle' para cada usuario -->
+      <app-usuario-detalle 
+        [miAtributo]="unUsuario" 
+        (edita)="editar($event)" 
+        [mostrarBotonEditar]="true">
+      </app-usuario-detalle>
     </div>
-
-    <div class="botones">
-    <button mat-raised-button color="warn" routerLink="/">
-      <mat-icon>arrow_back</mat-icon> Volver
-    </button>
   </div>
+  <app-usuario-detalle [mostrarBotonVolver]="true"></app-usuario-detalle>
 </div>
+

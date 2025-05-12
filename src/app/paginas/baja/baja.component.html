@@ -1,14 +1,21 @@
-<h2>Baja de Usuario</h2>
-<div *ngIf="this.usuarios.length>0">
+<div class="contenedor_tabla">
+  <h2>Baja de Usuario</h2>
+  <!-- Si hay usuarios en el array, se muestran -->
+  <div *ngIf="this.usuarios.length>0">
     <div *ngFor="let unUsuario of this.usuarios">
-        <app-usuario-detalle [miAtributo]="unUsuario" [mostrarBotonEditar]="false" [mostrarBotonEliminar]="true" (elimina)="eliminar($event)"></app-usuario-detalle>
-        <!-- Botón para eliminar al usuario -->
-        
+        <!-- 
+        Se pasa el usuario como input al componente hijo (UsuarioDetalle).
+        Se oculta el botón de editar, pero se muestra el de eliminar.
+        Se escucha el evento "elimina" emitido desde el componente hijo 
+        y se llama a la función eliminar del componente padre.
+        -->
+      <app-usuario-detalle 
+        [miAtributo]="unUsuario" 
+        [mostrarBotonEditar]="false" 
+        [mostrarBotonEliminar]="true" 
+        (elimina)="eliminar($event)">
+      </app-usuario-detalle>
     </div>
-    <!-- Botón para volver -->
-    <div class="botones">
-    <button mat-raised-button color="warn" routerLink="/">
-      <mat-icon>arrow_back</mat-icon> Volver
-    </button>
   </div>
+  <app-usuario-detalle [mostrarBotonVolver]="true"></app-usuario-detalle>
 </div>
